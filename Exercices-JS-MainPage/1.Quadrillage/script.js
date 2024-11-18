@@ -6,7 +6,7 @@
 //     Le nombre de couleurs différentes doit être de minimum 5.
 //     Le clic d'une case ne doit pas changer la couleur de ses voisines.
 
-const colorList = ["red","blue","green","gray","pink"]
+const colorList = ["red","blue","green","yellow","white"]
 
 
 const caseList = document.querySelectorAll(".case")
