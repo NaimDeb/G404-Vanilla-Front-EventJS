@@ -1,0 +1,14 @@
+.caseList{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    margin-top: 300px;
+}
+
+.case{
+    width:100px;
+    height:100px;
+    border: 1px black solid;
+}
