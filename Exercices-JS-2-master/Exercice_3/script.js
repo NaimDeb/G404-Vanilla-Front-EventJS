@@ -6,8 +6,8 @@ const textBox = document.querySelector("#lastname")
 console.log(textBox)
 
 // Ou blur
-textBox.addEventListener("input", handleTypeTextBox);
+textBox.addEventListener("keyup", handleTypeTextBox);
 
-function handleTypeTextBox() {
-    alert("Hallo")
+function handleTypeTextBox(event) {
+    alert(event.target.value)
 }
