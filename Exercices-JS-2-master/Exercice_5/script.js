@@ -5,9 +5,10 @@
 const allImages = document.querySelectorAll("img");
 
 allImages.forEach((image) => {
-  image.addEventListener("mouseenter", handleMouseEnterOnImage);
-  // image.addEventListener("mouseleave", handleMouseLeaveOnImage);
+  image.addEventListener("mouseover", handleMouseEnterOnImage);
 });
+
+
 let toggle = true;
 
 function handleMouseEnterOnImage(event) {
@@ -22,9 +23,4 @@ function handleMouseEnterOnImage(event) {
 
   toggle = !toggle
 }
-// function handleMouseLeaveOnImage(event) {
 
-//     let imageName = event.target.id
-
-//     event.target.src="./images/" + event.target.id + ".jpg";
-// }
