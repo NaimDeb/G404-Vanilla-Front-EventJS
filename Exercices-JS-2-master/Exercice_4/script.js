@@ -9,16 +9,16 @@ const city = document.querySelector("#city");
 
 const textBoxes = [lastName,firstName,city];
 
+console.log(textBoxes);
 
-btnRaz.addEventListener("onClick", handleClick);
+
+btnRaz.addEventListener("click", handleClick);
 
 function handleClick(){
 
     console.log("click")
 
-    textBoxes.forEach((texte) => {
-        console.log(texte);
-        
+    textBoxes.forEach((texte) => {        
         texte.value = ""
     })
 }
