@@ -10,7 +10,7 @@ const texteGagnant = document.querySelector("#texteGagnant")
 const divTexte = document.querySelector(".divTexte")
 
 
-window.addEventListener("keydown", handleKeysForText);
+document.addEventListener("keydown", handleKeysForText);
 
 function handleKeysForText(event) {
     if(event.ctrlKey && event.key == "v"){
