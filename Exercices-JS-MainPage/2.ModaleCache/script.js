@@ -17,61 +17,70 @@ let toggleCase = false;
 
 function handleClickShowMsg(event) {
   if (!toggleCase) {
+
+    // Mon sauveur
+    event.stopPropagation();
+
+    // On montre le popup
     caseTexte.style.visibility = "visible";
     body.style.backgroundColor = "gray";
-    document.addEventListener("click", handleClickHideMsg);
 
-    toggleCase = !toggleCase;
-    console.log("Switch toggle");
 
+
+    // Log
+    // console.log("Switch toggle");
+
+    // Deconstruct button TODO reconstruct later
     btn.removeEventListener("click", handleClickShowMsg);
+
+
+    // Le popup est bien lancé, toggleCase devient true
+    toggleCase = !toggleCase
+
+    // On construit le listener de la fermeture du popup
+    document.addEventListener("click", handleClickHideMsg);
 
   }
 }
 
 function handleClickHideMsg(event) {
-  let targetClick = event.target;
-  console.log("start handleClickHide");
+  // targetClick = regarde la balise ou on a cliqué
+let targetClick = event.target;
+// Log
+// console.log("start handleClickHide");
   
+  if (!caseTexte.contains(targetClick) && toggleCase) {
 
-  if (targetClick != caseTexte && toggleCase) {
+    // Log
+        // console.log("Detect TargetClick !");
 
-        console.log("Detect TargetClick !");
-
+        // On enlève le popup
         caseTexte.style.visibility = "hidden";
         body.style.backgroundColor = "white";
+
+        // Log
+        // console.log(caseTexte.style.visibility + " " + body.style.backgroundColor);
         
+        
+        // ToggleCase devient false
         toggleCase = !toggleCase
-        console.log("Switch Toggle tclick");
+        // Log
+        // console.log("Switch Toggle tclick");
+
+        // On reconstruit le btn
+        btn.addEventListener("click", handleClickShowMsg);
+        // Deconstruct listener
+        document.removeEventListener("click", handleClickHideMsg);
+
+
         
-  } else {
-    console.log("Not detected !");
-    console.log("targetclick = " + targetClick);
-    console.log("caseTexte = " + caseTexte);
-    console.log("togglecase = " + toggleCase)
-    
-    
-  }
+  } 
+  // else {
+    // Log
+    // console.log("Not detected !");
+    // console.log("targetclick = " + targetClick);
+    // console.log("caseTexte = " + caseTexte);
+    // console.log("togglecase = " + toggleCase) 
+  // }
 }
 
-// function handleClickRemovePopup() {
-
-//     let isPopupVisible = caseTexte.style.visibility
-
-//     if (isPopupVisible = "visible") {
-
-//         if
-
-//         caseTexte.style.visibility = "hidden"
-//         body.style.backgroundColor = "white"
-// }
-
-// }
-
-// function hideOnClickOutside(element) {
-//     const outsideClickListener = event => {
-//         if (!element.contains(event.target) && isVisible(element)) { // or use: event.target.closest(selector) === null
-//           element.style.display = 'none';
-//           removeClickListener();
-//         }
-//     }
