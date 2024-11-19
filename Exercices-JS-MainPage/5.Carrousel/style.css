@@ -21,6 +21,24 @@
     visibility: hidden;
 }
 
+.imgNotCarousel{
+    visibility: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    filter: blur(2px);
+    filter:brightness(50%)
+}
+
+.imgPrecedent{
+    top:0;
+    right:300px
+}
+.imgSuivant{
+    top:0;
+    left:300px
+}
+
 .carouselContainer{
     position:relative;
     width: 300px;
@@ -46,3 +64,4 @@ top:0;
 right:0;
 
 }
+

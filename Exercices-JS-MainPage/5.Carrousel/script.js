@@ -13,58 +13,103 @@ const imgCarousel = document.querySelector(".imgCarousel")
 const btnLeft = document.querySelector("#divLeft")
 const btnRight = document.querySelector("#divRight")
 
+
+const imgRight = document.querySelector(".imgSuivant")
+const imgLeft = document.querySelector(".imgPrecedent")
+
 btnCarousel.addEventListener("click", handleClickBtnShowCarousel)
-btnLeft.addEventListener("click", handleClickCarouselLeft)
-btnRight.addEventListener("click", handleClickCarouselRight)
 
 
+// Liste de toutes les images
 const imageList = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
 
+// Initialisation de index
 let indexImage = 0;
 
 
+// Bouton pour montrer l'image du carousel et d'initier les eventListener
 function handleClickBtnShowCarousel() {
     imgCarousel.style.visibility = "visible"
+    imgRight.style.visibility = "visible"
+    imgLeft.style.visibility = "visible"
+
+    btnLeft.addEventListener("click", handleClickCarouselLeft)
+    btnRight.addEventListener("click", handleClickCarouselRight)
 }
 
+
+// Boutons gauche et droite pour changer l'image
 function handleClickCarouselLeft() {
 
-    let currentImage = indexImage+1
-    // console.log("currentImage = " + currentImage);
-    
 
-    indexImage = (indexImage-1 + imageList.length) % imageList.length
-    // console.log("changed index to " + indexImage);
-    
+    // On calcule l'indice de la prochaine image
+    let nextImageIndex = (indexImage + 1) % imageList.length;
+    let prevImageIndex = (indexImage - 1 + imageList.length) % imageList.length;
+    let previewImageIndex = (prevImageIndex - 1 + imageList.length) % imageList.length;
 
-    // console.log(imgCarousel.src.replace((currentImage +".jpg"), ((indexImage+1) +".jpg")))
 
-    // console.log("Original img source = " + imgCarousel.src)
+    imgLeft.animate([
+        { transform: "translateX(0)" },
+        { transform: "translateX(-300px)" }
+    ], {
+        duration: 1000,
+        iterations: 1
+    });
 
-    imgCarousel.src = imgCarousel.src.replace((currentImage +".jpg"), ((indexImage+1) +".jpg"))
+    // imgCarousel.animate([
+    //     { transform: "translateX(0)" },
+    //     { transform: "translateX(-300px)" }
+    // ], {
+    //     duration: 1000,
+    //     iterations: 1
+    // });
 
-    // console.log("replaced " + currentImage + ".jpg to " + (indexImage+1) + ".jpg");
+    // imgRight.animate([
+    //     { transform: "translateX(0)" },
+    //     { transform: "translateX(-300px)" }
+    // ], {
+    //     duration: 1000,
+    //     iterations: 1
+    // });
+
+
+    // setTimeout(() => {
+    // Mettre à jour les images
+    imgLeft.src = imgLeft.src.replace(imageList[prevImageIndex], imageList[previewImageIndex]); 
+    imgCarousel.src = imgCarousel.src.replace(imageList[indexImage], imageList[prevImageIndex]);
+    imgRight.src = imgRight.src.replace(imageList[nextImageIndex], imageList[indexImage]);
+
+
+    // }, 1000)
+
+
+    // Mettre à jour l'indice courant
+    indexImage = prevImageIndex;
+
+
+
 }
 
 
 function handleClickCarouselRight() {
 
-    let currentImage = indexImage+1
-    // console.log("currentImage = " + currentImage);
+    // On calcule l'indice de la prochaine image
+    let nextImageIndex = (indexImage + 1) % imageList.length;
+    let prevImageIndex = (indexImage - 1 + imageList.length) % imageList.length;
+    let previewImageIndex = (nextImageIndex + 1 + imageList.length) % imageList.length;
+
     
 
-    indexImage = (indexImage+1 + imageList.length) % imageList.length
-    // console.log("changed index to " + indexImage);
-    
+    // Mettre à jour les images
+    imgLeft.src = imgLeft.src.replace(imageList[prevImageIndex], imageList[indexImage]); 
+    imgCarousel.src = imgCarousel.src.replace(imageList[indexImage], imageList[nextImageIndex]);
+    imgRight.src = imgRight.src.replace(imageList[nextImageIndex], imageList[previewImageIndex]);
 
-    // console.log(imgCarousel.src.replace((currentImage +".jpg"), ((indexImage+1) +".jpg")))
+    // Mettre à jour l'indice courant
+    indexImage = nextImageIndex;
+        
+    }
+// }
 
-    // console.log("Original img source = " + imgCarousel.src)
-
-    imgCarousel.src = imgCarousel.src.replace((currentImage +".jpg"), ((indexImage+1) +".jpg"))
-
-    // console.log("replaced " + currentImage + ".jpg to " + (indexImage+1) + ".jpg");
-    
-}
 
 
