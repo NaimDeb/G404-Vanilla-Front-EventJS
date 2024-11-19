@@ -1,0 +1,17 @@
+.divTexte{
+    width: 50%;
+    margin: auto;
+    margin-top: 300px;
+    text-align: center;
+    font-size:xx-large;
+    height: 400px;
+}
+
+#texteBasique{
+    margin-bottom: 150px;
+}
+
+#texteGagnant{
+    visibility: hidden;
+    font-weight: 700;
+}
