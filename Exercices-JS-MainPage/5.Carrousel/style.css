@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btnCarousel{
+    margin-left: 50%;
+    margin-top: 200px;
+    transform: translateX(-50%);
+    padding: 8px 15px;
+    background-color: #00d48d;
+    border: 1px solid gray;
+
+}
+
+.imgCarousel {
+    width: 300px;
+    height: 300px;
+    
+    visibility: hidden;
+}
+
+.carouselContainer{
+    position:relative;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+.divBtn{
+    position: absolute;
+    background-color: #00d48d30;
+    width: 100px;
+    height: 300px;
+}
+
+#divLeft{
+top:0;
+left:0;
+
+}
+
+#divRight{
+top:0;
+right:0;
+
+}
